@@ -1,7 +1,7 @@
 from datetime import datetime
 from typing import Any
 
-from sqlalchemy import String,DateTime,ForeignKey,Text
+from sqlalchemy import String, DateTime, ForeignKey, Text
 from sqlalchemy.dialects.postgresql import JSONB
 
 from sqlalchemy.orm import (
@@ -12,12 +12,14 @@ from sqlalchemy.orm import (
 
 from ..session import Base
 
+
 class Message(Base):
+    __tablename__ = "messages"
 
     id: Mapped[int] = mapped_column(
         primary_key=True,
         autoincrement=True,
-     )
+    )
 
     conversation_id: Mapped[int] = mapped_column(
         ForeignKey(
@@ -48,16 +50,8 @@ class Message(Base):
         nullable=False,
         default=datetime.utcnow,
     )
-    
 
-
-
-
-
-
-
-
-conversation = relationship(
-    "Conversation",
-    back_populates="messages"
-)
+    conversation = relationship(
+        "Conversation",
+        back_populates="messages"
+    )

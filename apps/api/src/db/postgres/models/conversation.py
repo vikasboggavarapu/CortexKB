@@ -1,6 +1,6 @@
 from datetime import datetime
 
-from sqlalchemy import String,DateTime,ForeignKey
+from sqlalchemy import String, DateTime, ForeignKey
 
 from sqlalchemy.orm import (
     Mapped,
@@ -14,7 +14,7 @@ from ..session import Base
 class Conversation(Base):
     __tablename__ = "conversations"
 
-    id:Mapped[int] = mapped_column(
+    id: Mapped[int] = mapped_column(
         primary_key=True,
         autoincrement=True,
     )
@@ -25,27 +25,24 @@ class Conversation(Base):
         index=True,
     )
 
-
-    title:Mapped[str] = mapped_column(
+    title: Mapped[str] = mapped_column(
         String(255),
         nullable=False,
     )
 
-
-    created_at:Mapped[datetime] = mapped_column(
+    created_at: Mapped[datetime] = mapped_column(
         DateTime(timezone=True),
         nullable=False,
         default=datetime.utcnow,
     )
 
-
     user = relationship(
         "User",
-        back_populates="comversations"
+        back_populates="conversations"
     )
 
     messages = relationship(
         "Message",
         back_populates="conversation",
-        cascade="all,delete-orphan"
+        cascade="all, delete-orphan"
     )
