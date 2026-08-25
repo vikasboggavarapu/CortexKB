@@ -44,3 +44,8 @@ class User(Base):
         "Conversation",
         back_populates="user"
     )
+
+    refresh_tokens = relationship(
+        "RefreshToken",
+        back_populates="user",
+    )
