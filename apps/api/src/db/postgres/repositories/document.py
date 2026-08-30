@@ -64,3 +64,12 @@ class DocumentRepository(BaseRepository[Document]):
         await self.session.refresh(document)
 
         return document
+
+    async def get_by_user_and_ids(
+        self,
+        document_id: list[int],
+    ) -> list[Document]:
+      result = await self.session.execute(
+        select(Document).where(Document.id.in_(document_ids))
+      )
+      return list(result.scalars().all())    
