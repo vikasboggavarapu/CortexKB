@@ -47,7 +47,7 @@ def rerank(
       RankedChunk(
         document_id=item["document_id"],
         text=item["text"],
-        score=round(item["score",6]),
+        score=round(item["score"],6),
         source="+".join(sorted(item["source"])),
       )
       for item in ranked[:top_k]
