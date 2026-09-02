@@ -67,7 +67,7 @@ class DocumentRepository(BaseRepository[Document]):
 
     async def get_by_user_and_ids(
         self,
-        document_id: list[int],
+        document_ids: list[int],
     ) -> list[Document]:
       result = await self.session.execute(
         select(Document).where(Document.id.in_(document_ids))
