@@ -1,0 +1,173 @@
+@import "tailwindcss";
+
+:root {
+  --background: #fffaf6;
+  --foreground: #2a1a15;
+
+  /* Brand palette */
+  --brand-coral: #e35336;
+  --brand-peach: #ffd3ac;
+  --brand-mauve: #9988a1;
+  --brand-rust: #8a2b0e;
+
+  --surface: #ffffff;
+  --surface-tint: #fff3e6;
+  --border-soft: #ecd9c8;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-surface: var(--surface);
+  --color-surface-tint: var(--surface-tint);
+  --color-border-soft: var(--border-soft);
+  --color-brand-coral: var(--brand-coral);
+  --color-brand-peach: var(--brand-peach);
+  --color-brand-mauve: var(--brand-mauve);
+  --color-brand-rust: var(--brand-rust);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #1c1310;
+    --foreground: #fbeee4;
+    --surface: #241a17;
+    --surface-tint: #2c1f1a;
+    --border-soft: #3d2c24;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans), Arial, Helvetica, sans-serif;
+}
+
+/* ─── Shared brand components ─────────────────────────────────────────── */
+
+.btn-brand {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-radius: 0.6rem;
+  padding: 0.55rem 1.1rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: white;
+  background-image: linear-gradient(135deg, var(--brand-coral), var(--brand-rust));
+  box-shadow: 0 4px 14px -4px rgba(227, 83, 54, 0.45);
+  transition: filter 0.15s ease, box-shadow 0.15s ease, transform 0.05s ease;
+}
+
+.btn-brand:hover:not(:disabled) {
+  filter: brightness(1.08);
+  box-shadow: 0 6px 18px -4px rgba(138, 43, 14, 0.5);
+}
+
+.btn-brand:active:not(:disabled) {
+  transform: translateY(1px);
+}
+
+.btn-brand:disabled {
+  opacity: 0.5;
+  box-shadow: none;
+  cursor: not-allowed;
+}
+
+.btn-outline-brand {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-radius: 0.6rem;
+  padding: 0.45rem 0.9rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  border: 1px solid var(--border-soft);
+  color: var(--brand-rust);
+  background: transparent;
+  transition: background-color 0.15s ease, border-color 0.15s ease;
+}
+
+.btn-outline-brand:hover:not(:disabled) {
+  background: var(--surface-tint);
+  border-color: var(--brand-coral);
+}
+
+.btn-outline-brand:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.input-brand {
+  width: 100%;
+  border-radius: 0.6rem;
+  border: 1px solid var(--border-soft);
+  background: var(--surface);
+  padding: 0.55rem 0.85rem;
+  font-size: 0.875rem;
+  color: var(--foreground);
+  outline: none;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.input-brand::placeholder {
+  color: var(--brand-mauve);
+}
+
+.input-brand:focus {
+  border-color: var(--brand-coral);
+  box-shadow: 0 0 0 3px rgba(227, 83, 54, 0.15);
+}
+
+.input-brand:disabled {
+  opacity: 0.6;
+}
+
+.card-brand {
+  background: var(--surface);
+  border: 1px solid var(--border-soft);
+  border-radius: 1rem;
+  box-shadow: 0 20px 45px -20px rgba(138, 43, 14, 0.25);
+}
+
+.auth-shell {
+  min-height: 100%;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  background: radial-gradient(
+      circle at 15% 20%,
+      color-mix(in srgb, var(--brand-peach) 55%, transparent),
+      transparent 55%
+    ),
+    radial-gradient(
+      circle at 85% 80%,
+      color-mix(in srgb, var(--brand-mauve) 40%, transparent),
+      transparent 55%
+    ),
+    linear-gradient(160deg, var(--background), var(--surface-tint));
+}
+
+.brand-mark {
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: 0.85rem;
+  background-image: linear-gradient(135deg, var(--brand-coral), var(--brand-rust));
+  box-shadow: 0 8px 20px -6px rgba(227, 83, 54, 0.55);
+}
+
+.scrollbar-brand::-webkit-scrollbar {
+  width: 8px;
+}
+
+.scrollbar-brand::-webkit-scrollbar-thumb {
+  background: var(--brand-mauve);
+  border-radius: 999px;
+  opacity: 0.5;
+}
