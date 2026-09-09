@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useState, type FormEvent } from "react";
+import { useState, type SubmitEvent } from "react";
 import { useAuth } from "@/lib/auth-context";
 import { ApiError } from "@/lib/api";
 
@@ -14,7 +14,7 @@ export default function RegisterPage() {
   const [error, setError] = useState<string | null>(null);
   const [submitting, setSubmitting] = useState(false);
 
-  async function handleSubmit(e: FormEvent) {
+  async function handleSubmit(e: SubmitEvent<HTMLFormElement>) {
     e.preventDefault();
     setError(null);
     setSubmitting(true);
@@ -33,9 +33,9 @@ export default function RegisterPage() {
     <div className="auth-shell">
       <div className="card-brand w-full max-w-sm p-8">
         <div className="brand-mark mb-5" />
-        <h1 className="mb-1 text-2xl font-semibold">Create an account</h1>
+        <h1 className="mb-1 text-2xl font-extrabold">Create an account</h1>
         <p className="mb-6 text-sm text-brand-mauve">
-          Upload documents, then query and chat with them.
+          Upload documents, query and chat with them
         </p>
         <form onSubmit={handleSubmit} className="flex flex-col gap-4">
           <div className="flex flex-col gap-1">
@@ -79,7 +79,7 @@ export default function RegisterPage() {
         <p className="mt-6 text-center text-sm text-brand-mauve">
           Already have an account?{" "}
           <Link href="/login" className="font-medium text-brand-coral hover:text-brand-rust">
-            Log in
+            Log In
           </Link>
         </p>
       </div>
